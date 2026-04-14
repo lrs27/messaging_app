@@ -62,6 +62,8 @@ flutter:
     - lib/assets/images/default.png
     - lib/assets/images/information.png
     - lib/assets/images/notification.png
+    - lib/assets/images/dog.png
+    - lib/assets/images/hamster.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
