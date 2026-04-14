@@ -12,18 +12,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final FCMService _fcmService = FCMService();
   String statusText = 'Waiting for a cloud message';
-  String imagePath = 'assets/images/default.png';
+  String imagePath = 'lib/assets/images/default.png';
 
   @override
   void initState() {
     super.initState();
-
-    // 1. Request notification permissions
-    FirebaseMessaging.instance
-        .requestPermission(alert: true, badge: true, sound: true)
-        .then((settings) {
-          debugPrint('Permission status: ${settings.authorizationStatus}');
-        });
 
     // 2. Get the FCM token for this device
     FirebaseMessaging.instance.getToken().then((token) {
@@ -35,7 +28,8 @@ class _HomePageState extends State<HomePage> {
       onData: (message) {
         setState(() {
           statusText = message.notification?.title ?? 'Payload received';
-          imagePath = 'assets/images/${message.data['asset'] ?? 'default'}.png';
+          imagePath =
+              'lib/assets/images/${message.data['asset'] ?? 'default'}.png';
         });
       },
     );
