@@ -15,3 +15,18 @@ Future<void> main() async {
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   runApp(const MessagingApp());
 }
+
+class MessagingApp extends StatelessWidget {
+  const MessagingApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Messaging App',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const Scaffold(
+        body: Center(child: Text('Welcome to Messaging App')),
+      ),
+    );
+  }
+}
