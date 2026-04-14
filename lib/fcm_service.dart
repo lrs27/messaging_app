@@ -8,21 +8,12 @@ class FCMService {
   }) async {
     await messaging.requestPermission(alert: true, badge: true, sound: true);
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      onData(message);
-    });
-
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      onData(message);
-    });
+    FirebaseMessaging.onMessage.listen(onData);
+    FirebaseMessaging.onMessageOpenedApp.listen(onData);
 
     final initialMessage = await messaging.getInitialMessage();
-    if (initialMessage != null) {
-      onData(initialMessage);
-    }
+    if (initialMessage != null) onData(initialMessage);
   }
 
-  Future<String?> getToken() {
-    return messaging.getToken();
-  }
+  Future<String?> getToken() => messaging.getToken();
 }

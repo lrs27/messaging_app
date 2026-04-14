@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
+import 'home_page.dart';
 
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -24,9 +25,7 @@ class MessagingApp extends StatelessWidget {
     return MaterialApp(
       title: 'Messaging App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const Scaffold(
-        body: Center(child: Text('Welcome to Messaging App')),
-      ),
+      home: const HomePage(),
     );
   }
 }
